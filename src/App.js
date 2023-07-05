@@ -3,7 +3,7 @@ import Frame from './components/Frame';
 
 function App() {
   return (
-    <div>
+    <div className='container-fuild'>
       <Frame />
     </div>
   );

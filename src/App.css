@@ -17,3 +17,21 @@ h1 {
   font-size: 4rem!important;
   font-weight: 100!important;
 }
+
+.menu-item {
+  cursor: pointer;
+  font-family: 'Neue Montreal', sans-serif;
+  transition: color 1s ease-in;
+}
+
+.menu-item:hover {
+  color: #363636; /* Change this to the desired text color */
+}
+
+ul {
+  list-style-type: none; /* Remove the default list-style */
+}
+
+.menu-active {
+  list-style-type: disc;
+}
