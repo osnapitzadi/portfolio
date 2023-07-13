@@ -4,7 +4,7 @@ import Hero from './Hero'
 import Projects from './Projects'
 import Info from './Info'
 import Contact from './Contact'
-import { set } from 'animejs'
+import { motion, AnimatePresence } from "framer-motion"
 
 function Frame() {
     
@@ -32,11 +32,32 @@ function Frame() {
                     </li>
                 </ul>
             </div>
-            <div className='col-6 d-flex'>
-                {page === 'projects' ? <Projects /> : null }
-                {page === 'info' ? <Info /> : null}
-                {page === 'contact' ? <Contact /> : null}
-            </div>
+            <AnimatePresence mode='wait'>
+                {page === 'projects' ? <motion.div
+                    className='projects m-3 align-self-end ms-auto'
+                    key="projects"
+                    initial={{ x:20,opacity: 0 }}
+                    animate={{ x:0, opacity: 1 }}
+                    exit={{ x:-20, opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                    ><Projects /></motion.div> : null }
+                {page === 'info' ? <motion.div
+                    className='m-3 align-self-end ms-auto info col-sm-12 col-md-6 col-lg-3'
+                    key="info"
+                    initial={{ x:20, opacity: 0 }}
+                    animate={{ x:0, opacity: 1 }}
+                    exit={{ x:-20, opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                    ><Info /></motion.div> : null}
+                {page === 'contact' ? <motion.div
+                    className='m-3 align-self-end ms-auto contact'
+                    key="contact"
+                    initial={{ x:20, opacity: 0 }}
+                    animate={{ x:0, opacity: 1 }}
+                    exit={{ x:-20, opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                    ><Contact /></motion.div> : null}
+            </AnimatePresence>
         </div>
         )
 }
