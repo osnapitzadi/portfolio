@@ -6,7 +6,7 @@ import Contact from './Contact'
 import { motion, AnimatePresence } from "framer-motion"
 
 function Frame() {    
-        const [page, setPage] = useState("projects");
+        const [page, setPage] = useState("info");
 
         const toggleComponent = (divId) => () => {
             setPage(divId);
