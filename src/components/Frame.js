@@ -1,21 +1,17 @@
-import React, { useState, useEffect, useRef } from 'react'
-import anime from "animejs/lib/anime.es.js"
+import React, { useState } from 'react'
 import Hero from './Hero'
 import Projects from './Projects'
 import Info from './Info'
 import Contact from './Contact'
 import { motion, AnimatePresence } from "framer-motion"
 
-function Frame() {
-    
+function Frame() {    
         const [page, setPage] = useState("projects");
-
 
         const toggleComponent = (divId) => () => {
             setPage(divId);
         };
 
- 
         return (
         <div className='frame d-flex flex-row'>
             <div className='col-6'>

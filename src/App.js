@@ -3,7 +3,7 @@ import Frame from './components/Frame';
 import { useState, useEffect } from 'react';
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
 
   useEffect(() => {
     const body = document.body
