@@ -1,9 +1,20 @@
 import './App.css';
 import Frame from './components/Frame';
 import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from "framer-motion"
+import Loader from './components/Loader';
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
+
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+      setLoading(true)
+      setTimeout(() => {
+          setLoading(false)
+      }, 3000)
+  }, [])
 
   useEffect(() => {
     const body = document.body
@@ -20,15 +31,38 @@ function App() {
     }
   }, [darkMode])
   return (
-    <div className='container-fuild'>
-      <Frame />
-      <div
-        id="toggle"
-        onClick={() => darkMode === false ? setDarkMode(true) : setDarkMode(false)}
+    <AnimatePresence mode='wait'>
+      {/* Loader animation */}
+      {loading ? 
+      <motion.div
+        key={'loader'}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 1 }}
       >
-        <div className="toggle-inner"/>
-      </div>
-    </div>
+        <Loader />
+      </motion.div>
+      :
+      <motion.div
+        key={'app'}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 1 }}
+      >
+        <div className='container-fuild'>
+          <Frame />
+          <div
+            id="toggle"
+            onClick={() => darkMode === false ? setDarkMode(true) : setDarkMode(false)}
+          >
+            <div className="toggle-inner"/>
+          </div>
+        </div>
+      </motion.div>
+      }
+    </AnimatePresence>
   );
 }
 
