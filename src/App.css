@@ -124,3 +124,15 @@ ul {
 .h7 {
   font-size: 0.75rem;
 }
+
+.scrollable {
+  width: 300px; /* or any desired width */
+  height: 200px; /* or any desired height */
+  overflow-y: scroll;
+  position: relative;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  color: #363636;
+}
